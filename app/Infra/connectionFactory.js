@@ -22,11 +22,23 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
 	//if(process.env.NODE_ENV == 'development') { // se o NODE_ENV estiver definido como development
 	if(!process.env.NODE_ENV) { //se nao tiver definido nenhuma variavel de ambiente NODE_ENV, estamos fazendo desenvolvimento (fim das contas é igual que o de cima)
 		console.log("agora sim conectei o BD");
+		//Vou conectar ao Banco em Núvem que o Hiroku me deu, se eu substituir os dados abaixos eles ficarão publicos, entao vou criar uma var que vai remeter a variável de ambiente que o hiroku criou no meu servidor
+		var urlDeConexao = process.env.CLEARDB_DATABASE_URL;
+		//aqui vou criar uma expressao regular para ir cortando cada campo dessa urlDeConexao e transformando em um array
+		var grupos = urlDeConexao.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?reconnect=true/); // regex semore entre "//"  depois comeca com sql: dai tem que skipar as barras, depois das barras vem o login, que é um grupo que vai ate o :  dai depois outro grupo que vai até o @
+		// o primeiro araay [0] é a expressao regular inteira SEMPRE
+		return mysql.createConnection({ //a var connection vai estabelecer a conexão com o banco de dados
+			host: grupos[3], //em JSon, fazemos a configuração da chamada
+			user: grupos[1],
+			password: grupos[2],
+			database: grupos[4]
+		/*
 		return mysql.createConnection({ //a var connection vai estabelecer a conexão com o banco de dados
 				host: 'localhost', //em JSon, fazemos a configuração da chamada
 				user: 'root',
 				password: '',
 				database: 'casadocodigo'
+		*/		
 		});
 	}
 
