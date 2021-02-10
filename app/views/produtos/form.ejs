@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <div class='erros'>
+            <%if(errosValidacao){%>
+                <ul>
+                    <%for(var i=0;i<errosValidacao.length;i++){%>
+                        <li><%=errosValidacao[i].param%> - <%=errosValidacao[i].msg%></li> <!-- mensagens de erro de validação dos campos do form -->
+                    <%}%>
+                </ul>
+            <%}%> 
+        </div>
+        <form action="/produtos" method="POST">
+
+            <div>
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" value="<%=produto.titulo%>" placeholder="coloque o título do livro aqui"/> <!-- o value contem o JS que tras o produto.título guardado de quando dá erro de validação -->
+            </div>
+            <div>
+                <label for="preco">Preço</label>
+                <input type="text" id="preco" name="preco" value="<%=produto.preco%>" placeholder="Ex. 30.0"/>
+            </div>
+            <div>
+                <label for="descricao">Descrição</label>
+                <textarea cols="20" rows="10" id="descricao" name="descricao" placeholder="coloque a descrição do livro aqui"><%=produto.descricao%></textarea>
+            </div>
+            
+            <input type="submit" value="gravar"/>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros de Tecnologia</title>
+</head>
+<body>
+    <h1>EM CONSTRUÇÃO</h1>
+
+<script src="/socket.io/socket.io.js"></script> <!-- não precisa configurar rota, quando instala o socket io ele ja faz automaticamente -->
+<script> 
+
+    /* FICOU ULTRAPASSADO, AO INVEZ DE FICAR PERGUNTANDO AO SERVIDOR, TRABALHAREMOS COM WEBSOCKET QUE É O SERVIDOR NOTIFICAR QUANDO TEM ALGO NOVO
+    setInterval(function(){ //setInterval executa algo (nesse caso uma funcao) de tempos em tempos (nesse caso em 10000 milisegundos - 10segundos) 
+        //ajax pedindo por novas promoçoes
+    },10000); //ele fica perguntando ao servidor de 10 em 10 segundos
+    */
+
+    /* ISSO AQUI É CRIAR O WEBSOCKET NA MAO
+    new ws = WebSocket('ws://localhost:3000/novas/promocoes'); //instanciamos o objeto websocket que é o novo protocolo criado pro servidor enviar coisas para o navegador (mas tmb vale o contrario)
+    ws.onmessage = function(data){ //o onmessae serve para:  quando chegar dados novos, voce aplica a funcão
+
+    };
+    */
+
+    /* SOCKET.IO */
+    var socket = io(); //a funcao io se conecta com o servidor com o protocolo que estiver disponivel dentro do servidor (se tiver websocket ele usa, se nao ele usa ? pooling ? ...)
+    socket.on('novaPromocao',function(data){ //quando o servidor me mandar uma mensagem chamada novaPromocao, eu quero trata-la com a função
+        alert("Livro em promocao "+data.livro.id); //data vai ser um json dentro dele vai ter uma propriedade chamada livro e dentro do livro id, vai jogar um popup na home quando cadastrar uma promocao em promocoes/form
+    });
+
+</script>
+
+</body>
+</html>
