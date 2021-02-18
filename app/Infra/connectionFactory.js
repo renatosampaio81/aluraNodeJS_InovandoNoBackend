@@ -50,14 +50,14 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
             	Database = grupos[4];
 
         	console.log(`User ${user}, password: ${password}, host: ${host}, database: ${database}`);
-            */
+            
         	return  mysql.createConnection({            
             	host : process.env.DATABASE_HOST,
             	user : process.env.DATABASE_USER,
             	password : process.env.DATABASE_PASS,
         	    database : process.env.DATABASE_NAME
 	        });
-		
+			*/
 
 
 		/*
@@ -73,7 +73,7 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
 			password: grupos[2],
 			database: grupos[4]	
 		});
-		
+		*/
 		
 		return mysql.createConnection({ //a var connection vai estabelecer a conexão com o banco de dados
 			host: 'us-cdbr-east-03.cleardb.com', //em JSon, fazemos a configuração da chamada
@@ -81,7 +81,7 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
 			password: 'bd71afb5',
 			database: 'heroku_0f6ecef09db5a41'	
 		});
-		*/
+		
 	}
 }
 
