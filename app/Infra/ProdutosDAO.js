@@ -27,6 +27,10 @@ function ProdutosDAO(connection){
 	this._connection = connection;
 }
 
+ProdutosDAO.prototype.get = function(id, callback) {
+    this._connection.query("select * from livros where id = ?", id, callback);
+}
+
 //prototype adiciona coisas na estrutura padrao de uma classe, aqui estamos incluindo uma lista, que é na verdade uma função
 ProdutosDAO.prototype.listagem = function(callback) { //aqui recebo o callback lá do produtos.js, this referencia o objeto que estavos usando
 	this._connection.query('select * from livros', callback); //monta a query
