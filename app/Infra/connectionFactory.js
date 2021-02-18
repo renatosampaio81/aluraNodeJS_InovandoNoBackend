@@ -40,23 +40,22 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
 		
 		
 		var urlDeConexao = process.env.CLEARDB_DATABASE_URL;
-
 	        console.log(urlDeConexao);
-
+			/*
 	        var grupos = urlDeConexao.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?reconnect=true/);
         
 	        var user = grupos[1],
         	    password = grupos[2],
-            	    host = grupos[3],
-            	    database = grupos[4];
+            	host = grupos[3],
+            	Database = grupos[4];
 
         	console.log(`User ${user}, password: ${password}, host: ${host}, database: ${database}`);
-             
+            */
         	return  mysql.createConnection({            
-            	    host : host,
-            	    user : user,
-            	    password : password,
-        	    database : database
+            	host : process.env.DATABASE_HOST,
+            	user : process.env.DATABASE_USER,
+            	password : process.env.DATABASE_PASS,
+        	    database : process.env.DATABASE_NAME
 	        });
 		
 
