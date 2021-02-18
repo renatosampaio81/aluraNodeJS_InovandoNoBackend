@@ -12,12 +12,6 @@ module.exports = function(){ //cria o modulo que vai exportar a função
 }
 */
 
-//abaixo um wrapper - embrulha a outra função
-module.exports = function() { //cria o modulo que vai exportar a função
-	console.log("express load está chamando o wrapper");
-	return createDBConnection; //aqui NAO estou chamando a funçao ( usando createConnection() )
-}
-
 function createDBConnection() { //essa é a função embrublhada, que'não será chamada na subido do app (via express-load), e sim quando eu quiser chama-la dentro da minha aplicação
 	//if(process.env.NODE_ENV == 'development') { // se o NODE_ENV estiver definido como development
 
@@ -55,4 +49,10 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
 			database: grupos[4]	
 		});
 	}
+}
+
+//abaixo um wrapper - embrulha a outra função
+module.exports = function() { //cria o modulo que vai exportar a função
+	console.log("express load está chamando o wrapper");
+	return createDBConnection; //aqui NAO estou chamando a funçao ( usando createConnection() )
 }
