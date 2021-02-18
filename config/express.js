@@ -19,8 +19,8 @@ module.exports = function() { //No app.js, o require chama um arquivo de configu
 
 	//ABAIXO CARREGA TODOS OS MODULOS DA NOSSA APLICAÇÃO
 	load('routes', {cwd: 'app'})//invoco o objeto do load e carrego dentro do express (que é a var app (.into(app))). O routes é a pasta onde ficam as rotas, agora fica definido que tudo que está dentro de routes é carregado automaticamente dentro da app
-	.then('infra')//aqui estou carregando também a pasta infra, pra poder carregar o connetionFactory automaticamente também. O Json {cwd: 'app'} especifica que ele deve procurar a pasta route a partir do diretório app
-	.into(app); 
+		.then('infra')//aqui estou carregando também a pasta infra, pra poder carregar o connetionFactory automaticamente também. O Json {cwd: 'app'} especifica que ele deve procurar a pasta route a partir do diretório app
+		.into(app); 
 
 	// middleware para tratar enderecos digitados errados na barra do navegador
 	// ele precisa entrar exatamente aqui, depois do load routes, pra poder ter a chance de encontrar a pagina digitada, senao nao vai encontrar nem as paginas que existem
@@ -30,7 +30,7 @@ module.exports = function() { //No app.js, o require chama um arquivo de configu
 	})
 	
 	app.use(function(error,req,res,next){ //nesse middleware, se um erro acontecer no express ele vai procurar esse middleware, mesmo o 404 estando antes, porque esse middleware está esperando um erro como 1 argumento
-		if(!process.env.NODE_ENV) { //se não estiver definido nada no NODE_ENV, ele mostra a pagina de erro, se tiver em test.. aparece a mensagem padrao
+		if(process.env.NODE_ENV != 'test') { //se NODE_ENV for diferente de test, ele mostra a pagina de erro, se tiver em test.. aparece a mensagem padrao
 			res.status(500).render('erros/500'); //se uma resposta a uma requisição retornar status 404 (pagina nao localizado), renderiza pra mim a pagina 404.ejs
 			return;
 		}

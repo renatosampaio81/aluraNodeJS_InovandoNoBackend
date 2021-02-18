@@ -27,6 +27,10 @@ var rotasProdutos = require('./app/routes/produtos')(app); //aqui eu importo as 
 
 var porta = process.env.PORT || 3000; //o Hiroku cria uma variável de ambiente pra definir a porta a ser utilizada para a aplicação, aqui estou chamando essa variável de ambiente, se não encontrar, utiliza a 3000
 //http.listen(3000, function(){ //to chamando o listen pela API do Express, perceba que é bem mais simples que pelo HTML. O servidor vai escutar a porta 3000
-http.listen(porta, function(){
-	console.log("servidor está rodando no heroku"); //quando iniciar o serviço de ouvir as requisições pela porta 3000, a função irá disparar a mensagem.
+var server = http.listen(porta, function(){
+
+	var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Example app listening at http://%s:%s', host, port); //quando iniciar o serviço de ouvir as requisições pela porta 3000, a função irá disparar a mensagem.
 });

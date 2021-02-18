@@ -40,7 +40,7 @@ module.exports = function(app) {
 				//response.send(results); //o resultado é enviado pro navegador
 				response.format({
 					html: function(){ //chamará essa chave se o cliente pedir preferencialmente um html (um browser por exemplo)
-						response.render('produtos/lista',{lista:results}) //Estamos renderizando para produtos/lista. Em Json, definimos que tem uma chave que se chama Lista que está assossiada ao results, vamos usa-la no lista.ejs
+						response.render('produtos/lista',{lista:results}); //Estamos renderizando para produtos/lista. Em Json, definimos que tem uma chave que se chama Lista que está assossiada ao results, vamos usa-la no lista.ejs
 					},
 					json: function(){ //chamará essa chave se o cliente pedir preferencialmente um Json (em casos android por exemplo)
 						response.json(results);
