@@ -31,8 +31,8 @@ module.exports = function() { //No app.js, o require chama um arquivo de configu
 	
 	app.use(function(error,req,res,next){ //nesse middleware, se um erro acontecer no express ele vai procurar esse middleware, mesmo o 404 estando antes, porque esse middleware está esperando um erro como 1 argumento
 		//if(process.env.NODE_ENV != 'test') { //se NODE_ENV for diferente de test, ele mostra a pagina de erro, se tiver em test.. aparece a mensagem padrao
-			res.status(500).render('erros/500'); //se uma resposta a uma requisição retornar status 404 (pagina nao localizado), renderiza pra mim a pagina 404.ejs
-			return;
+		//	res.status(500).render('erros/500'); //se uma resposta a uma requisição retornar status 404 (pagina nao localizado), renderiza pra mim a pagina 404.ejs
+		//	return;
 		//}
 		next(error); //se tiver em produção (ou seja, NODE_ENV=''), ele vai chamar a proxima função do express passando error como argumento. se tiver em teste (ou seja, NODE_ENV='test'), ele vai mostrar a pagina de erro 500
 	})
