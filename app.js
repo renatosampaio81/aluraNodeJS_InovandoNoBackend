@@ -2,8 +2,8 @@
 // ao inves de carregar a aplicação web com "node nomedaapp.js" voce roda com "nodemon nomedaapp.js" isso somente enquanto vc estiver desenvolvendo.. finalizado nao precisa do nodemon
 var configura = require('./config/express'); // importa a biblioteca express, pelo arquivo de config no endereço em questão
 var app = configura(); //invoco a função que a var configura está guardando
-var http = require('http').Server(app); //aqui eu importo a biblioteca http, chamo a funcão server passando pra ela o express .. tudo isso pra poder atender a chamada do socket.io. Esse app ta configurado lá no arquivo de config
-var io = require('socket.io')(http); //importa o socket io // devidamente importando, ela espera como argumento um handle de requisições.. nao podemos passar o express, precisa ser o html
+var server = require('http').createServer(app); //aqui eu importo a biblioteca http, chamo a funcão server passando pra ela o express .. tudo isso pra poder atender a chamada do socket.io. Esse app ta configurado lá no arquivo de config
+var io = require('socket.io')(server); //importa o socket io // devidamente importando, ela espera como argumento um handle de requisições.. nao podemos passar o express, precisa ser o html
 
 app.set('io', io);// set serve pra colocarmos coisas dentro do express, aqui eu falo que vai ter uma var io que está assossiada ao retorno da funcao do socket io.. pra que ? pra usar lá no promocoes.js, em rotas
 
@@ -27,7 +27,7 @@ var rotasProdutos = require('./app/routes/produtos')(app); //aqui eu importo as 
 
 var porta = process.env.PORT || 3000; //o Hiroku cria uma variável de ambiente pra definir a porta a ser utilizada para a aplicação, aqui estou chamando essa variável de ambiente, se não encontrar, utiliza a 3000
 //http.listen(3000, function(){ //to chamando o listen pela API do Express, perceba que é bem mais simples que pelo HTML. O servidor vai escutar a porta 3000
-var server = http.listen(porta, function(){
+server.listen(porta, function(){
 
 	var host = server.address().address;
     var port = server.address().port;

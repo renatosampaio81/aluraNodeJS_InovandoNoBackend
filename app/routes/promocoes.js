@@ -15,9 +15,15 @@ module.exports = function(app) {
     app.post("/promocoes",function(req,res){
         var promocao = req.body; //os dados que foram enviados via formulário, via post (lá no form.ejs) ficam guardados na propriedade body do request (graças ao express)
         console.log(promocao);
-        app.get('io').emit('novaPromocao',promocao); //emit passa o tipo de mensagem que nos queremos e o json (promocao) passa pra onde ? pro socket.io tratar (la no index), o ser vidor notifica o navegador e o socket.io trata (fica numa fila)
-        // o app.get vai buscar a var io que eu guardei no express la no app.js
-        res.redirect('promocoes/form');
+        var connection = app.infra.connectionFactory();
+        var produtosDAO = new app.infra.ProdutosDAO(connection);
+        produtosDAO.get(promocao.livro.id, function(erros, rows) {
+            var produto = rows[0];       
+            promocao.livro = produto;
+            app.get('io').emit('novaPromocao',promocao); //emit passa o tipo de mensagem que nos queremos e o json (promocao) passa pra onde ? pro socket.io tratar (la no index), o ser vidor notifica o navegador e o socket.io trata (fica numa fila)
+            // o app.get vai buscar a var io que eu guardei no express la no app.js
+            res.redirect('promocoes/form');
+        });    
     });
 
 }
