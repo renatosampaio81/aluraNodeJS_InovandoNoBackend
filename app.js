@@ -1,7 +1,7 @@
 // na aula 07 foi instalado a biblioteca nodemon, o que ele faz ? ele monitora alterações no código enquanto ele estiver em execução, e atualiza o servidor web.. isso pra não precisar ficar fechando e abrindo o serviço de servidor web em qualquer alteração no código.. enquanto estamos programando
 // ao inves de carregar a aplicação web com "node nomedaapp.js" voce roda com "nodemon nomedaapp.js" isso somente enquanto vc estiver desenvolvendo.. finalizado nao precisa do nodemon
-var configura = require('./config/express'); // importa a biblioteca express, pelo arquivo de config no endereço em questão
-var app = configura(); //invoco a função que a var configura está guardando
+var app = require('./config/express')(); // importa a biblioteca express, pelo arquivo de config no endereço em questão
+//invoco a função que a var configura está guardando
 var server = require('http').createServer(app); //aqui eu importo a biblioteca http, chamo a funcão server passando pra ela o express .. tudo isso pra poder atender a chamada do socket.io. Esse app ta configurado lá no arquivo de config
 var io = require('socket.io')(server); //importa o socket io // devidamente importando, ela espera como argumento um handle de requisições.. nao podemos passar o express, precisa ser o html
 
