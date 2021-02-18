@@ -2,7 +2,7 @@
   "name": "casadocodigo",
   "version": "1.0.0",
   "description": "site da casa do codigo",
-  "main": "app.js",
+  "main": "index.js",
   "engines": {
     "node": "14.15.1"
   },
