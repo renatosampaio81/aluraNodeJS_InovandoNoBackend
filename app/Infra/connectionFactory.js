@@ -12,7 +12,7 @@ module.exports = function(){ //cria o modulo que vai exportar a função
 }
 */
 
-var createDBConnection = function() { //essa é a função embrublhada, que'não será chamada na subido do app (via express-load), e sim quando eu quiser chama-la dentro da minha aplicação
+function createDBConnection() { //essa é a função embrublhada, que'não será chamada na subido do app (via express-load), e sim quando eu quiser chama-la dentro da minha aplicação
 	if(!process.env.NODE_ENV || process.env.NODE_ENV == 'dev') { //se nao tiver definido nenhuma variavel de ambiente NODE_ENV, estamos fazendo desenvolvimento (fim das contas é igual que o de cima)
 		console.log("conectei ao BD local");
 		return mysql.createConnection({ //a var connection vai estabelecer a conexão com o banco de dados
@@ -39,6 +39,7 @@ var createDBConnection = function() { //essa é a função embrublhada, que'não
 		var urlDeConexao = process.env.CLEARDB_DATABASE_URL;
 	    console.log(urlDeConexao);
 		
+		/*
 		//aqui vou criar uma expressao regular para ir cortando cada campo dessa urlDeConexao e transformando em um array
 		var grupos = urlDeConexao.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?reconnect=true/); // regex semore entre "//"  depois comeca com sql: dai tem que skipar as barras, depois das barras vem o login, que é um grupo que vai ate o :  dai depois outro grupo que vai até o @
 		// o primeiro araay [0] é a expressao regular inteira SEMPRE
@@ -56,15 +57,15 @@ var createDBConnection = function() { //essa é a função embrublhada, que'não
 			password : password,
 			database : database
 		});
-
-		/*
+		*/
+	
        return  mysql.createConnection({            
             host : 'us-cdbr-east-03.cleardb.com',
-            user : 'b3d72084456d6b',
-            password : 'd68a7a17',
-            database : 'heroku_0e37ae81f9c6451'
+            user : 'b1004f5b934554',
+            password : '76ca1d79',
+            database : 'heroku_6c3dfa86aecab0f'
         });
-        */
+        
 		
 	}
 };
