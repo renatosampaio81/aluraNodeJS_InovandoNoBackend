@@ -29,8 +29,8 @@ var porta = process.env.PORT || 3000; //o Hiroku cria uma variável de ambiente 
 //http.listen(3000, function(){ //to chamando o listen pela API do Express, perceba que é bem mais simples que pelo HTML. O servidor vai escutar a porta 3000
 server.listen(porta, function(){
 
-	var host = server.address().address;
-    var port = server.address().port;
+	//var host = server.address().address;
+    //var port = server.address().port;
 
-    console.log('Example app listening at http://%s:%s', host, port); //quando iniciar o serviço de ouvir as requisições pela porta 3000, a função irá disparar a mensagem.
+    //console.log('Example app listening at http://%s:%s', host, port); //quando iniciar o serviço de ouvir as requisições pela porta 3000, a função irá disparar a mensagem.
 });
