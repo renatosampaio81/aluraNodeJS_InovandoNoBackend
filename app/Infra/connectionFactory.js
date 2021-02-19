@@ -56,6 +56,15 @@ var createDBConnection = function() { //essa é a função embrublhada, que'não
 			password : password,
 			database : database
 		});
+
+		/*
+       return  mysql.createConnection({            
+            host : 'us-cdbr-east-03.cleardb.com',
+            user : 'b3d72084456d6b',
+            password : 'd68a7a17',
+            database : 'heroku_0e37ae81f9c6451'
+        });
+        */
 		
 	}
 };
