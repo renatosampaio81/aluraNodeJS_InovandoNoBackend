@@ -39,7 +39,7 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
 		var urlDeConexao = process.env.CLEARDB_DATABASE_URL;
 	    console.log(urlDeConexao);
 		
-		/*
+		
 		//aqui vou criar uma expressao regular para ir cortando cada campo dessa urlDeConexao e transformando em um array
 		var grupos = urlDeConexao.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?reconnect=true/); // regex semore entre "//"  depois comeca com sql: dai tem que skipar as barras, depois das barras vem o login, que é um grupo que vai ate o :  dai depois outro grupo que vai até o @
 		// o primeiro araay [0] é a expressao regular inteira SEMPRE
@@ -57,15 +57,15 @@ function createDBConnection() { //essa é a função embrublhada, que'não será
 			password : password,
 			database : database
 		});
-		*/
-	
-       return  mysql.createConnection({            
+		
+        /*
+        return  mysql.createConnection({            
             host : 'us-cdbr-east-03.cleardb.com',
-            user : 'b1004f5b934554',
-            password : '76ca1d79',
+            user : 'b1004f5*******',
+            password : '76c*****',
             database : 'heroku_6c3dfa86aecab0f'
         });
-        
+        */
 		
 	}
 };

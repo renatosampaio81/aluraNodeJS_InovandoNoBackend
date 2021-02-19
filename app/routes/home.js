@@ -1,6 +1,6 @@
 // AQUI VAMOS CONFIGURAR A ROTA DA PAGINA PRINCIPAL
 
-/*
+
 module.exports = function(app) {
     app.get("/", function(request,response){ //assossia a raiz da aplicação "/" a uma função que irá tratar as requisições e as respostas
         var connection = app.infra.connectionFactory(); // estou chamando a conexão ao banco via caminho (funcionalidade do load express) em vez de via variável, pq agora o connectionFatory está no express-load
@@ -11,16 +11,4 @@ module.exports = function(app) {
         });
         connection.end();    
     }); 
-};
-*/
-
-module.exports = function(app) {
-    app.get("/", function(req, res) {
-        var connection = app.infra.connectionFactory();
-        var produtosDAO = new app.infra.ProdutosDAO(connection);
-        produtosDAO.listagem(function(erros, resultado) {
-            res.render('home/index', {livros: resultado});
-        });
-        connection.end();
-    });
 };
