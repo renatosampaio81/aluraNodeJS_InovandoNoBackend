@@ -18,7 +18,7 @@ module.exports = function() { //No app.js, o require chama um arquivo de configu
 	app.use(bodyParser.json()); // inclui o formato Json como um segundo formato para enviar dados pro SQL
 
 	//ABAIXO CARREGA TODOS OS MODULOS DA NOSSA APLICAÇÃO
-	load('routes', {cwd: "app"})//invoco o objeto do load e carrego dentro do express (que é a var app (.into(app))). O routes é a pasta onde ficam as rotas, agora fica definido que tudo que está dentro de routes é carregado automaticamente dentro da app
+	load("routes", {cwd: "app"})//invoco o objeto do load e carrego dentro do express (que é a var app (.into(app))). O routes é a pasta onde ficam as rotas, agora fica definido que tudo que está dentro de routes é carregado automaticamente dentro da app
 		.then("infra")//aqui estou carregando também a pasta infra, pra poder carregar o connetionFactory automaticamente também. O Json {cwd: 'app'} especifica que ele deve procurar a pasta route a partir do diretório app
 		.into(app); 
 
